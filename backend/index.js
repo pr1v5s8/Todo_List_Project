@@ -10,7 +10,14 @@ app.use(cors());
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-});
+})
+.then(() => console.log("MongoDB Connected"))
+.catch((err) => console.error("MongoDB Connection Error:", err));
+
+// mongoose.connect(MONGO_URI)
+//   .then(() => console.log("MongoDB Connected"))
+//   .catch((err) => console.error("MongoDB Connection Error:", err));
+
 
 const TodoSchema = new mongoose.Schema({
     title: String,
